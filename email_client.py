@@ -29,10 +29,15 @@ email_contents = handler.read()
 handler.close()
 
 handler = open(email_auth_path, 'r')
-api_key = handler.readlines()[0]
+api_key = handler.readlines()
 handler.close()
 
-api_key = api_key.replace('\r', '')
+if len(api_key) != 1:
+    print('Do you set the email_auth.txt file correctly?')
+    exit(1)
+
+
+api_key = api_key[0].replace('\r', '')
 api_key = api_key.replace('\n', '')
 
 
@@ -42,6 +47,10 @@ handler.close()
 
 if email_setting[-1] == '':
     email_setting = email_setting[0:-1]
+if len(email_setting) != 3:
+    print('Do you set the mail_setting.csv file correctly?')
+    exit(1)
+
 
 subject = list(csv.reader([email_setting[0]]))[0][1]
 sender_name = list(csv.reader([email_setting[1]]))[0][1]
