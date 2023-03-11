@@ -361,15 +361,6 @@ table{
 
                       <td valign="top" width="50%">
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                          <!--<tr>
-                            <td style="padding-top: 20px; padding-left: 10px;">
-                              <a href="#"><img src="images/work-5.jpg" alt="" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
-                              <div class="text-project" style="text-align: center;">
-                              	<h3><a href="#">Work name</a></h3>
-                              	<span>Branding</span>
-                              </div>
-                            </td>
-                          </tr>-->
                           {second_column}
                         </table>
                       </td>
