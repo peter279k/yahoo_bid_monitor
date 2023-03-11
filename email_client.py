@@ -1,6 +1,7 @@
 import os
 import csv
 import json
+import htmlmin
 import requests
 
 
@@ -27,6 +28,8 @@ if os.path.isfile(email_addresses) is False:
 handler = open(email_html, 'r', encoding='utf-8')
 email_contents = handler.read()
 handler.close()
+
+minified_email_contents = htmlmin.Minifier().minify(email_contents)
 
 handler = open(email_auth_path, 'r')
 api_key = handler.readlines()
@@ -77,7 +80,7 @@ post_data = {
     },
     'to': [],
     'subject': subject,
-    'htmlContent': email_contents,
+    'htmlContent': minified_email_contents,
 }
 
 for email_address in email_addresses:
