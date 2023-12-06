@@ -37,7 +37,8 @@ for booth_id in list(booth_lists)[0]:
 
     response = requests.get(booth_url)
     soup = BeautifulSoup(response.text, 'html.parser')
-    bid_data = json.loads(soup.select_one("#isoredux-data")['data-state'])
+    raw_bid_text = soup.select_one("#isoredux-data").text.replace('window.ISO_REDUX_DATA=', '')[0:-1]
+    bid_data = json.loads(raw_bid_text)
     hit_bid_datasets = bid_data['booth']['listings']['hits']
 
     booth_name = bid_data['booth']['name']
